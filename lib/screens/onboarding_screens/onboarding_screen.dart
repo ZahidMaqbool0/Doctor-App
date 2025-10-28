@@ -1,5 +1,7 @@
 import 'package:doctorapp/assets/colors/my_colors.dart';
 import 'package:doctorapp/provider/onboarding_provider.dart';
+// import 'package:doctorapp/screens/authentication_screens/signin_screen.dart';
+import 'package:doctorapp/screens/authentication_screens/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -12,76 +14,141 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  //
-  countMethod() {}
-
   @override
   Widget build(BuildContext context) {
     //Media Query
     final MediaQueryData mediaQuery = MediaQuery.of(context);
+    // Status Bar Transparent
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent, // Status bar brightness (optional)
+        statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+        statusBarBrightness: Brightness.light, // For iOS (dark icons)),
+      ),
     );
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
+        actionsPadding: EdgeInsets.symmetric(horizontal: 10),
         backgroundColor: Colors.transparent,
         actions: [
-          TextButton(
-            onPressed: countMethod,
-            child: Text(
-              'Skip',
-              style: TextStyle(color: MyColors.basePrimaryColor),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                (context),
+                MaterialPageRoute(builder: (context) => SignupScreen()),
+              );
+            },
+            hoverColor: MyColors.graylightColor,
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                'Skip',
+                style: TextStyle(
+                  color: MyColors.textHeadingColor,
+                  fontSize: 18,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
           ),
         ],
       ),
       body: Consumer<OnboardingProvider>(
         builder: (context, onBoardingProvider, child) => PageView.builder(
-          scrollDirection: Axis.horizontal,
-          // controller: PageController(),
-          onPageChanged: (index) => onBoardingProvider.updateCurrentPage(index),
+          onPageChanged: (onBoardingScreenIndex) {
+            onBoardingProvider.UpdateOnBoardingScreenIndex(
+              onBoardingScreenIndex,
+            );
+          },
           itemCount: onBoardingProvider.getOnBoardingScreenData.length,
-          itemBuilder: (context, index) => Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                onBoardingProvider.getOnBoardingScreenData[index].imageAssets,
-                width: mediaQuery.size.width * 0.5,
-              ),
-              (onBoardingProvider.currentPageIndex ==
-                      onBoardingProvider.getOnBoardingScreenData.length - 1)
-                  ? ElevatedButton(onPressed: () {}, child: Text('Get Started'))
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        onBoardingProvider.getOnBoardingScreenData.length,
-                        (dotIndex) => Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          width: onBoardingProvider.currentPageIndex == dotIndex
-                              ? 14
-                              : 8,
-                          height:
-                              onBoardingProvider.currentPageIndex == dotIndex
-                              ? 14
-                              : 8,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color:
-                                onBoardingProvider.currentPageIndex == dotIndex
-                                ? MyColors.basePrimaryColor
-                                : Colors.grey.shade300,
-                          ),
-                        ),
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  onBoardingProvider.getOnBoardingScreenData[index].imageAssets,
+                ),
+                SizedBox(height: mediaQuery.size.height * 0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    onBoardingProvider.getOnBoardingScreenData.length,
+                    (indexDot) => AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      height: 8,
+                      width: 8,
+                      decoration: BoxDecoration(
+                        color:
+                            onBoardingProvider.getOnBoardingScreenIndex ==
+                                indexDot
+                            ? MyColors.basePrimaryColor
+                            : MyColors.graylightColor,
+                        borderRadius: BorderRadius.circular(50),
                       ),
                     ),
-
-              Text(onBoardingProvider.getOnBoardingScreenData[index].title),
-              Text(
-                onBoardingProvider.getOnBoardingScreenData[index].description,
-              ),
-            ],
+                  ),
+                ),
+                SizedBox(height: mediaQuery.size.height * 0.05),
+                Text(
+                  onBoardingProvider.getOnBoardingScreenData[index].title,
+                  style: TextStyle(
+                    color: MyColors.textHeadingColor,
+                    fontSize: 18,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                SizedBox(height: mediaQuery.size.height * 0.005),
+                Text(
+                  onBoardingProvider.getOnBoardingScreenData[index].description,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: MyColors.textLightColor,
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+                SizedBox(height: mediaQuery.size.height * 0.05),
+                (onBoardingProvider.getOnBoardingScreenIndex == 2)
+                    ? Ink(
+                        width: mediaQuery.size.width * 0.9,
+                        decoration: BoxDecoration(
+                          color: MyColors.basePrimaryColor,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              (context),
+                              MaterialPageRoute(builder: (context) => SignupScreen()),
+                            );
+                          },
+                          hoverColor: MyColors.graylightColor,
+                          borderRadius: BorderRadius.circular(20),
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text(
+                              'Get Started',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: MyColors.whiteColor,
+                                fontSize: 16,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : SizedBox(),
+              ],
+            ),
           ),
         ),
       ),

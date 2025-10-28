@@ -2,7 +2,7 @@ import 'package:doctorapp/model/onboarding_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnboardingProvider extends ChangeNotifier {
-  int _currentPageIndex = 0;
+  int _onBoardingScreenIndex = 0;
 
   List<OnboardingModel> _onBoardingScreenData = [
     OnboardingModel(
@@ -26,10 +26,11 @@ class OnboardingProvider extends ChangeNotifier {
   ];
 
   List<OnboardingModel> get getOnBoardingScreenData => _onBoardingScreenData;
-  int get currentPageIndex => _currentPageIndex;
+  int get getOnBoardingScreenIndex => _onBoardingScreenIndex;
 
-  void updateCurrentPage(int index) {
-    _currentPageIndex = index;
+  void UpdateOnBoardingScreenIndex(int onBoardingScreenIndex){
+    _onBoardingScreenIndex = onBoardingScreenIndex;
     notifyListeners();
   }
+
 }

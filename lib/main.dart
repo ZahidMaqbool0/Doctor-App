@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: "Roboto",
         colorScheme: ColorScheme.fromSeed(seedColor: MyColors.basePrimaryColor),
       ),
       home: const OnboardingScreen(),
