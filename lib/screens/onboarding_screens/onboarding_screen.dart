@@ -18,19 +18,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     //Media Query
     final MediaQueryData mediaQuery = MediaQuery.of(context);
-    // Status Bar Transparent
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent, // Status bar brightness (optional)
-        statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-        statusBarBrightness: Brightness.light, // For iOS (dark icons)),
-      ),
-    );
     return Scaffold(
-      backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
-        backgroundColor: Colors.transparent,
         actions: [
           InkWell(
             onTap: () {
@@ -126,7 +116,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           onTap: () {
                             Navigator.push(
                               (context),
-                              MaterialPageRoute(builder: (context) => SignupScreen()),
+                              MaterialPageRoute(
+                                builder: (context) => SignupScreen(),
+                              ),
                             );
                           },
                           hoverColor: MyColors.graylightColor,

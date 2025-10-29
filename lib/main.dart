@@ -3,12 +3,13 @@ import 'package:doctorapp/provider/onboarding_provider.dart';
 import 'package:doctorapp/screens/onboarding_screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => OnboardingProvider(),),
+        ChangeNotifierProvider(create: (context) => OnboardingProvider()),
       ],
       child: const MyApp(),
     ),

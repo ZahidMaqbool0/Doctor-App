@@ -6,10 +6,11 @@ class MyColors {
   static const Color fontHeadingColor = Color(0xFF00003F);
   static const Color fontDescriptionColor = Color(0xFF444444);
 
-  //Indicator Colo
   static const Color graylightColor = Color(0xFFC8C8C8);
   static const Color textLightColor = Color(0xFF444444);
   static const Color textHeadingColor = Color(0xFF00003F);
+
+  static const Color textFieldBorderColor = Color(0xFFDEDEDE);
 
   // simple Colors
   static const Color whiteColor = Color(0xFFFFFFFF);
