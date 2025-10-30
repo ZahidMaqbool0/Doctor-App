@@ -1,7 +1,7 @@
 class OnboardingModel {
-  String imageAssets;
-  String title;
-  String description;
+  final String imageAssets;
+  final String title;
+  final String description;
 
   OnboardingModel({
     required this.imageAssets,

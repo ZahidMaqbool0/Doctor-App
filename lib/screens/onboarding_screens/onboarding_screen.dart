@@ -1,7 +1,7 @@
 import 'package:doctorapp/assets/colors/my_colors.dart';
 import 'package:doctorapp/provider/onboarding_provider.dart';
-// import 'package:doctorapp/screens/authentication_screens/signin_screen.dart';
-import 'package:doctorapp/screens/authentication_screens/signup_screen.dart';
+import 'package:doctorapp/screens/authentication_screens/signin_screen.dart';
+import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -18,15 +18,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     //Media Query
     final MediaQueryData mediaQuery = MediaQuery.of(context);
+    final PageController _pageController = PageController();
     return Scaffold(
+      backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
+        backgroundColor: MyColors.whiteColor,
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
         actions: [
           InkWell(
             onTap: () {
               Navigator.push(
                 (context),
-                MaterialPageRoute(builder: (context) => SignupScreen()),
+                MaterialPageRoute(builder: (context) => SigninScreen()),
               );
             },
             hoverColor: MyColors.graylightColor,
@@ -48,6 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       body: Consumer<OnboardingProvider>(
         builder: (context, onBoardingProvider, child) => PageView.builder(
+          controller: _pageController,
           onPageChanged: (onBoardingScreenIndex) {
             onBoardingProvider.UpdateOnBoardingScreenIndex(
               onBoardingScreenIndex,
@@ -105,40 +109,35 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                 ),
                 SizedBox(height: mediaQuery.size.height * 0.05),
-                (onBoardingProvider.getOnBoardingScreenIndex == 2)
-                    ? Ink(
-                        width: mediaQuery.size.width * 0.9,
-                        decoration: BoxDecoration(
-                          color: MyColors.basePrimaryColor,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              (context),
-                              MaterialPageRoute(
-                                builder: (context) => SignupScreen(),
-                              ),
-                            );
-                          },
-                          hoverColor: MyColors.graylightColor,
-                          borderRadius: BorderRadius.circular(20),
-                          child: Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'Get Started',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: MyColors.whiteColor,
-                                fontSize: 16,
-                                fontFamily: 'Roboto',
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : SizedBox(),
+
+                AnimatedBuilder(
+                  animation: _pageController,
+                  builder: (context, child) {
+                    double opacity = 0;
+                    if (_pageController.hasClients) {
+                      // Fractional page value
+                      final page = _pageController.page ?? 0;
+                      opacity = (page >= 2) ? 1 : 0;
+                    }
+                    return AnimatedOpacity(
+                      duration: Duration(milliseconds: 100),
+                      opacity: opacity,
+                      child: CustomButton(
+                        buttonText: 'Get Started',
+                        backgroundColor: MyColors.basePrimaryColor,
+                        buttonTextColor: MyColors.whiteColor,
+                        onTap: () {
+                          Navigator.push(
+                            (context),
+                            MaterialPageRoute(builder: (context) => SigninScreen()),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+
+
               ],
             ),
           ),
