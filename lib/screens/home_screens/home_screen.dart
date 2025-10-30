@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10),
           child: Container(
             color: Colors.white,
-            height: 80,
+            height: 90,
             child: DashboardHeaderWidget(),
           ),
         )
