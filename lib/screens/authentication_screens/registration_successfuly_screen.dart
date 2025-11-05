@@ -3,16 +3,9 @@ import 'package:doctorapp/screens/home_screens/home_screen.dart';
 import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
-class RegistrationSuccessfulyScreen extends StatefulWidget {
+class RegistrationSuccessfulyScreen extends StatelessWidget {
   const RegistrationSuccessfulyScreen({super.key});
 
-  @override
-  State<RegistrationSuccessfulyScreen> createState() =>
-      _RegistrationSuccessfulyScreenState();
-}
-
-class _RegistrationSuccessfulyScreenState
-    extends State<RegistrationSuccessfulyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

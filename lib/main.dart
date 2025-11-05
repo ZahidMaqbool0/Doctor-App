@@ -2,7 +2,9 @@ import 'package:doctorapp/assets/colors/my_colors.dart';
 import 'package:doctorapp/global/scroll_behavior.dart';
 import 'package:doctorapp/provider/custom_gender_dropdown_field_provider.dart';
 import 'package:doctorapp/provider/dashboard_header_widget_provider.dart';
+import 'package:doctorapp/provider/health_package_provider.dart';
 import 'package:doctorapp/provider/onboarding_provider.dart';
+import 'package:doctorapp/provider/our_services_provider.dart';
 import 'package:doctorapp/provider/signin_signup_screen_slider_provider.dart';
 import 'package:doctorapp/screens/home_screens/home_screen.dart';
 import 'package:doctorapp/screens/onboarding_screens/onboarding_screen.dart';
@@ -24,6 +26,8 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => DashboardHeaderWidgetProvider(),
         ),
+        ChangeNotifierProvider(create: (context) => OurServicesProvider()),
+        ChangeNotifierProvider(create: (context) => HealthPackageProvider()),
       ],
       child: const MyApp(),
     ),
@@ -43,8 +47,9 @@ class MyApp extends StatelessWidget {
         fontFamily: "Roboto",
         colorScheme: ColorScheme.fromSeed(seedColor: MyColors.basePrimaryColor),
       ),
-      //home: const OnboardingScreen(),
-      home: const HomeScreen(),
+      home: const OnboardingScreen(),
+      //home: const HomeScreen(),
+      //home: OurServicesScreen(),
     );
   }
 }
