@@ -13,8 +13,10 @@ class MyColors {
   static const Color textLightColor = Color(0xFF777777);
   static const Color textHeadingColor = Color(0xFF00003F);
   static const Color lineColor = Color(0xFFE1E1E1);
+  static const Color ourServicesbackgroundColor = Color(0xFFF3F7FF);
 
   static const Color textFieldBorderColor = Color(0xFFDEDEDE);
+  static const Color ourServicesBorderColor = Color(0xFFECEDF1);
 
   // simple Colors
   static const Color whiteColor = Color(0xFFFFFFFF);
@@ -25,8 +27,10 @@ class MyColors {
   static const Color searchWidgetBorderColor = Color(0xFFE8F3F1);
   static const Color upcomingAppointmentTextColor = Color(0xFFADADAD);
   static const Color upcomingAppointmentBorderColor = Color(0xFFE6E8F0);
+  static const Color ratingColor = Color(0xFFF99417);
 
   // Gradient Color
   static const Color beginGradientColor = Color(0xFF022F8E);
   static const Color endGradientColor = Color(0xD9022F8E);
+  static const Color storeCardColr = Color(0xFF3E3D9514);
 }

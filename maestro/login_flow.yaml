@@ -1,0 +1,29 @@
+appId: com.example.doctorapp
+---
+
+- waitForText:
+    text: "Sign In"
+    timeout: 5000
+
+- assertVisible:
+    text: "Sign In"
+
+- tap:
+    text: "Continue With Mobile Number"
+
+- waitForText:
+    text: "Verify Mobile Number"  # Assuming next screen has this text
+    timeout: 5000
+
+- back
+
+- waitForText:
+    text: "Sign In"
+    timeout: 5000
+
+- tap:
+    text: "Sign Up Here"
+
+- waitForText:
+    text: "Sign Up"
+    timeout: 5000

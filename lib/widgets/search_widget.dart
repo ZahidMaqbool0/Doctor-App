@@ -6,19 +6,23 @@ class SearchWidget extends StatelessWidget {
   final TextInputType keyboardType;
   final String hintText;
 
+  final Function(String)? onChanged;
+
   SearchWidget({
     super.key,
     required this.keyboardType,
     required this.hintText,
     required this.textEditingController,
+    this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       cursorColor: MyColors.blackColor,
       keyboardType: keyboardType,
       controller: textEditingController,
+      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(

@@ -1,6 +1,7 @@
 import 'package:doctorapp/assets/colors/my_colors.dart';
 import 'package:doctorapp/screens/authentication_screens/registration_successfuly_screen.dart';
 import 'package:doctorapp/screens/authentication_screens/signup_user_input_details_screen.dart';
+import 'package:doctorapp/screens/dashboard_screen.dart';
 import 'package:doctorapp/screens/home_screens/home_screen.dart';
 import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:flutter/gestures.dart';
@@ -116,7 +117,7 @@ class _SigninSignupMobileSendMobileOtpScreenState
                       (context),
                       MaterialPageRoute(
                         builder: (context) =>
-                        (widget.screenType == 'SignUp') ? SignupUserInputDetailsScreen() : HomeScreen(),
+                        (widget.screenType == 'SignUp') ? SignupUserInputDetailsScreen() : DashboardScreen(),
                       ),
                     );
                   },

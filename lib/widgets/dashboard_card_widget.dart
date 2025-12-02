@@ -5,7 +5,16 @@ class DashboardCardWidget extends StatelessWidget {
   final String imagePath;
   final String bannerText;
   final String buttonText;
+  final Color backColorBigInColor;
+  final Color backColorEndColor;
+  final Color btnBackColor;
+  final Color btnTextColor;
+  final Color banrTextColor;
   final VoidCallback onTap;
+  final double? imageHeight;
+  final double? imaheWidth;
+
+  final Widget? image;
 
   const DashboardCardWidget({
     super.key,
@@ -13,6 +22,14 @@ class DashboardCardWidget extends StatelessWidget {
     required this.imagePath,
     required this.bannerText,
     required this.buttonText,
+    required this.backColorBigInColor,
+    required this.backColorEndColor,
+    required this.btnBackColor,
+    required this.btnTextColor,
+    required this.banrTextColor,
+    this.imageHeight,
+    this.imaheWidth,
+    this.image,
   });
 
   @override
@@ -23,7 +40,7 @@ class DashboardCardWidget extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: [MyColors.beginGradientColor, MyColors.endGradientColor],
+          colors: [backColorBigInColor, backColorEndColor],
           stops: [0.0, 1.0],
         ),
         borderRadius: BorderRadius.circular(10),
@@ -40,16 +57,16 @@ class DashboardCardWidget extends StatelessWidget {
                   Text(
                     bannerText.toString(),
                     style: TextStyle(
-                      color: MyColors.whiteColor,
-                      fontSize: 20,
+                      color: banrTextColor,
+                      fontSize: 16,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  SizedBox(height: 15),
+                  SizedBox(height: 10),
                   Container(
                     decoration: BoxDecoration(
-                      color: MyColors.whiteColor.withValues(alpha: 0.15),
+                      color: btnBackColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: InkWell(
@@ -64,8 +81,8 @@ class DashboardCardWidget extends StatelessWidget {
                         child: Text(
                           buttonText.toString(),
                           style: TextStyle(
-                            color: MyColors.whiteColor,
-                            fontSize: 16,
+                            color: btnTextColor,
+                            fontSize: 14,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.normal,
                           ),
@@ -77,12 +94,20 @@ class DashboardCardWidget extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            alignment: Alignment.bottomCenter,
-            child: Image.asset(
-              'lib/assets/images/home_page_banner_image.webp',
-              width: 130,
-            ),
+
+          Align(
+            alignment: Alignment.bottomRight,
+            child: image == null
+                ? Container(
+                    // width: imaheWidth ?? 130,
+                    height: imageHeight ?? 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    child: Image.asset(imagePath),
+                  )
+                : image
           ),
         ],
       ),

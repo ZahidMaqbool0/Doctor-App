@@ -1,4 +1,5 @@
 import 'package:doctorapp/assets/colors/my_colors.dart';
+import 'package:doctorapp/screens/dashboard_screen.dart';
 import 'package:doctorapp/screens/home_screens/home_screen.dart';
 import 'package:doctorapp/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class RegistrationSuccessfulyScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         (context),
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        MaterialPageRoute(builder: (context) => DashboardScreen()),
                       );
                     },
                   ),

@@ -13,8 +13,8 @@ class DashboardHeaderWidget extends StatelessWidget {
       Expanded(child: Row(
         children: [
           Container(
-            width: 60,
-            height: 60,
+            width: 40,
+            height: 40,
             child: ClipOval(
               child: Image.asset(
                 'lib/assets/images/dashboard_header_image.jpg',
@@ -33,9 +33,9 @@ class DashboardHeaderWidget extends StatelessWidget {
                     'Good Morning',
                     style: TextStyle(
                       color: MyColors.dashboardHeaderTextColor,
-                      fontSize: 20,
+                      fontSize: 14,
                       fontFamily: 'Roboto',
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   SizedBox(
@@ -49,9 +49,9 @@ class DashboardHeaderWidget extends StatelessWidget {
                 'Bentornato',
                 style: TextStyle(
                   color: MyColors.dashboardHeaderTextColor,
-                  fontSize: 25,
+                  fontSize: 20,
                   fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -60,9 +60,9 @@ class DashboardHeaderWidget extends StatelessWidget {
       )),
        Row(
          children: [
-           SvgPicture.asset('lib/assets/images/heart_icon.svg', width: 28,),
+           SvgPicture.asset('lib/assets/images/heart_icon.svg', width: 24,),
            SizedBox(width: 10,),
-           SvgPicture.asset('lib/assets/images/notification_icon.svg', width: 28,),
+           SvgPicture.asset('lib/assets/images/notification_icon.svg', width: 24,),
          ],
        )
       ],
