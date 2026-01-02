@@ -121,70 +121,75 @@ class _HomeScreenState extends State<HomeScreen> {
                             : ourServicesProvider.getOurServicesData.length;
                         final isLastIndex = index == itemCount - 1;
                         ourServicesProvider.getOurServicesData;
-                        return InkWell(
-                          borderRadius: BorderRadius.circular(10),
-                          onTap: () {
-                            if (isLastIndex) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MoreServicesScreen(),
-                                ),
-                              );
-                            } else {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ServiceDetailScreen(
-                                    imgaeUrl: service.imagUrlOurServices,
-                                    serviceName: service.textServicesHeading,
-                                    rating: service.rating ?? 0.0,
-                                    review: service.reviews.toString(),
-                                    about: service.about,
-                                    openHour: service.openHours,
+                        return Semantics(
+                          label: 'more_services_$index',
+                          button: true,
+                          key: ValueKey('more_services_$index'),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(10),
+                            onTap: () {
+                              if (isLastIndex) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MoreServicesScreen(),
+                                  ),
+                                );
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ServiceDetailScreen(
+                                      imgaeUrl: service.imagUrlOurServices,
+                                      serviceName: service.textServicesHeading,
+                                      rating: service.rating ?? 0.0,
+                                      review: service.reviews.toString(),
+                                      about: service.about,
+                                      openHour: service.openHours,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 60,
+                                  height: 60,
+                                  padding: EdgeInsets.all(18),
+                                  decoration: BoxDecoration(
+                                    //color: MyColors.basePrimaryColor,
+                                    shape: BoxShape.circle,
+                                    color: MyColors.ourServicesbackgroundColor,
+                                  ),
+                                  child: ClipRRect(
+                                    child: Image.asset(
+                                      isLastIndex
+                                          ? 'lib/assets/images/our_services_images/more.png'
+                                          : ourServicesProvider
+                                                .getOurServicesData[index]
+                                                .imagUrlOurServices,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
-                              );
-                            }
-                          },
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 60,
-                                height: 60,
-                                padding: EdgeInsets.all(18),
-                                decoration: BoxDecoration(
-                                  //color: MyColors.basePrimaryColor,
-                                  shape: BoxShape.circle,
-                                  color: MyColors.ourServicesbackgroundColor,
-                                ),
-                                child: ClipRRect(
-                                  child: Image.asset(
-                                    isLastIndex
-                                        ? 'lib/assets/images/our_services_images/more.png'
-                                        : ourServicesProvider
-                                              .getOurServicesData[index]
-                                              .imagUrlOurServices,
-                                    fit: BoxFit.fill,
+                                const SizedBox(height: 2),
+                                Text(
+                                  isLastIndex
+                                      ? 'More'
+                                      : ourServicesProvider
+                                            .getOurServicesData[index]
+                                            .textServicesHeading,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'Roboto',
+                                    color: Colors.black,
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                isLastIndex
-                                    ? 'More'
-                                    : ourServicesProvider
-                                          .getOurServicesData[index]
-                                          .textServicesHeading,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  fontFamily: 'Roboto',
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       },
@@ -216,124 +221,131 @@ class _HomeScreenState extends State<HomeScreen> {
                           scrollDirection: Axis.horizontal,
                           // shrinkWrap: true,
                           //physics: BouncingScrollPhysics(),
-                          reverse: true,
-                          itemBuilder: (context, index) => InkWell(
-                            borderRadius: BorderRadius.circular(10),
-                            splashColor: MyColors.textLightColor,
-                            onTap: () {
-                              Navigator.push(
-                                (context),
-                                MaterialPageRoute(
-                                  builder: (context) => HealthPackagesScreen(
-                                    lengthIs: healthPackageProvider
-                                        .getHealthPackage
-                                        .length,
+                          // reverse: true,
+                          itemBuilder: (context, index) => Semantics(
+                            label: healthPackageProvider.getHealthPackage[index].id,  // ← bilkul alag naam
+                            button: true,
+                            key: ValueKey(healthPackageProvider.getHealthPackage[index].id),
+                            child: InkWell(
+                              //key: Key('health_package_$index'),
+                              borderRadius: BorderRadius.circular(10),
+                              splashColor: MyColors.textLightColor,
+                              onTap: () {
+                                Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                    builder: (context) => HealthPackagesScreen(
+                                      lengthIs: healthPackageProvider
+                                          .getHealthPackage
+                                          .length,
+                                    ),
                                   ),
+                                );
+                              },
+                              child: Container(
+                                //key: ValueKey('healthPackage_$index'),
+                                margin: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: MyColors.whiteColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: MyColors.blackColor.withValues(
+                                        alpha: 0.15,
+                                      ),
+                                      offset: Offset(0, 0.2),
+                                      blurRadius: 0.3,
+                                      spreadRadius: 0.4,
+                                    ),
+                                  ],
                                 ),
-                              );
-                            },
-                            child: Container(
-                              margin: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: MyColors.whiteColor,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: MyColors.blackColor.withValues(
-                                      alpha: 0.15,
-                                    ),
-                                    offset: Offset(0, 0.2),
-                                    blurRadius: 0.3,
-                                    spreadRadius: 0.4,
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 200,
-                                    height: 120,
-                                    decoration: BoxDecoration(
-                                      color: MyColors.blackColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 200,
+                                      height: 120,
+                                      decoration: BoxDecoration(
+                                        color: MyColors.blackColor,
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                        ),
                                       ),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      ),
-                                      child: Image.asset(
-                                        healthPackageProvider
-                                            .getHealthPackage[index]
-                                            .imageUrl,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: 8),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10),
+                                        ),
+                                        child: Image.asset(
                                           healthPackageProvider
                                               .getHealthPackage[index]
-                                              .Name,
-                                          style: TextStyle(
-                                            color: MyColors.fontHeadingColor,
-                                            fontSize: 14,
-                                            fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                              .imageUrl,
+                                          fit: BoxFit.cover,
                                         ),
-                                        Text(
-                                          healthPackageProvider
-                                              .getHealthPackage[index]
-                                              .price
-                                              .toString(),
-                                          style: TextStyle(
-                                            color: MyColors.fontHeadingColor,
-                                            fontSize: 14,
-                                            fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    SizedBox(height: 8),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            healthPackageProvider
+                                                .getHealthPackage[index]
+                                                .Name,
+                                            style: TextStyle(
+                                              color: MyColors.fontHeadingColor,
+                                              fontSize: 14,
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
-                                        ),
+                                          Text(
+                                            healthPackageProvider
+                                                .getHealthPackage[index]
+                                                .price
+                                                .toString(),
+                                            style: TextStyle(
+                                              color: MyColors.fontHeadingColor,
+                                              fontSize: 14,
+                                              fontFamily: 'Roboto',
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
 
-                                        Row(
-                                          spacing: 3,
-                                          children: [
-                                            Icon(
-                                              Icons.star,
-                                              color: MyColors.ratingColor,
-                                              size: 16,
-                                            ),
-                                            Text(
-                                              healthPackageProvider
-                                                  .getHealthPackage[index]
-                                                  .rating
-                                                  .toString(),
-                                              style: TextStyle(
-                                                color:
-                                                    MyColors.fontHeadingColor,
-                                                fontSize: 14,
-                                                fontFamily: 'Roboto',
-                                                fontWeight: FontWeight.w500,
+                                          Row(
+                                            spacing: 3,
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                color: MyColors.ratingColor,
+                                                size: 16,
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                              Text(
+                                                healthPackageProvider
+                                                    .getHealthPackage[index]
+                                                    .rating
+                                                    .toString(),
+                                                style: TextStyle(
+                                                  color:
+                                                      MyColors.fontHeadingColor,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Roboto',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -389,117 +401,125 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
-                      reverse: true,
                       itemBuilder: (context, index) {
                         var item =
                             healthArticleProvider.getFilteredArticles[index];
                         return Padding(
+
                           padding: EdgeInsets.only(bottom: 10),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                (context),
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      HealthArticleDetiledScreen(
-                                        articalName: item.nameArtical,
-                                        articaleDetiled: item.description,
-                                        nameAuthor: item.nameAuthor,
-                                        date: item.date,
-                                        authorImage: item.imageAuthor,
-                                        articalImage: item.imageUrlArtical,
-                                      ),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(2),
-                              decoration: BoxDecoration(
-                                color: MyColors.whiteColor,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: MyColors.graylightColor,
-                                    spreadRadius: 0.5,
+                          child: Semantics(
+                            label: 'a_$index',
+                            button: true,
+                            key:  ValueKey(item.id),
+                            child: InkWell(
+                              //key: Key('articale_$index'),
+                              onTap: () {
+                                Navigator.push(
+                                  (context),
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        HealthArticleDetiledScreen(
+                                          articalName: item.nameArtical,
+                                          articaleDetiled: item.description,
+                                          nameAuthor: item.nameAuthor,
+                                          date: item.date,
+                                          authorImage: item.imageAuthor,
+                                          articalImage: item.imageUrlArtical,
+                                        ),
                                   ),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 6,
-                                  horizontal: 12,
-                                ),
-                                child: Row(
-                                  spacing: 8,
-                                  children: [
-                                    Container(
-                                      width: 55,
-                                      height: 55,
-                                      child: Image.asset(
-                                        item.imageUrlArtical,
-                                        width: double.infinity,
-                                        height: 120,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        // important for left alignment
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            item.nameArtical,
-                                            softWrap: true,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              fontFamily: 'Roboto',
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                item.date,
-                                                style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: 'Roboto',
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                              Text(
-                                                item.readTime,
-                                                style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontFamily: 'Roboto',
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        healthArticleProvider.toggleBookmark(
-                                          index,
-                                        );
-                                      },
-                                      child: Icon(
-                                        Icons.bookmark,
-                                        size: 20,
-                                        color: item.isBookmarked
-                                            ? MyColors.basePrimaryColor
-                                            : MyColors.graylightColor,
-                                      ),
+                                );
+                              },
+                              child: Container(
+                                //key: ValueKey('articale_$index'),
+                                padding: const EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  color: MyColors.whiteColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: MyColors.graylightColor,
+                                      spreadRadius: 0.5,
                                     ),
                                   ],
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 6,
+                                    horizontal: 12,
+                                  ),
+                                  child: Row(
+                                    spacing: 8,
+                                    children: [
+                                      Container(
+                                        width: 55,
+                                        height: 55,
+                                        child: Image.asset(
+                                          item.imageUrlArtical,
+                                          width: double.infinity,
+                                          height: 120,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          // important for left alignment
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              semanticsLabel: 'articale_$index',
+                                              item.nameArtical,
+                                              softWrap: true,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'Roboto',
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  item.date,
+                                                  style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontFamily: 'Roboto',
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  item.readTime,
+                                                  style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontFamily: 'Roboto',
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          healthArticleProvider.toggleBookmark(
+                                            index,
+                                          );
+                                        },
+                                        child: Icon(
+                                          Icons.bookmark,
+                                          size: 20,
+                                          color: item.isBookmarked
+                                              ? MyColors.basePrimaryColor
+                                              : MyColors.graylightColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

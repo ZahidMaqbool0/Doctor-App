@@ -14,11 +14,12 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     //Media Query
     final MediaQueryData mediaQuery = MediaQuery.of(context);
-    final PageController _pageController = PageController();
+
     return Scaffold(
       backgroundColor: MyColors.whiteColor,
       appBar: AppBar(
@@ -26,6 +27,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         actionsPadding: EdgeInsets.symmetric(horizontal: 10),
         actions: [
           InkWell(
+            key: Key('skip_button'),
             onTap: () {
               Navigator.push(
                 (context),
@@ -122,27 +124,50 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     return AnimatedOpacity(
                       duration: Duration(milliseconds: 100),
                       opacity: opacity,
-                      child: CustomButton(
-                        buttonText: 'Get Started',
-                        backgroundColor: MyColors.basePrimaryColor,
-                        buttonTextColor: MyColors.whiteColor,
+                      child: InkWell(
                         onTap: () {
                           Navigator.push(
-                            (context),
+                            context,
                             MaterialPageRoute(builder: (context) => SigninScreen()),
                           );
                         },
-                      ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: 14),
+                          decoration: BoxDecoration(
+                            color: MyColors.basePrimaryColor,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            semanticsLabel: 'Get',
+                            'Get Started',
+                            style: TextStyle(
+                              color: MyColors.whiteColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      )
                     );
                   },
                 ),
-
-
               ],
             ),
           ),
         ),
       ),
+      // floatingActionButton:  CustomButton(
+      //   buttonText: 'Get Started',
+      //   backgroundColor: MyColors.basePrimaryColor,
+      //   buttonTextColor: MyColors.whiteColor,
+      //   onTap: () {
+      //     Navigator.push(
+      //       (context),
+      //       MaterialPageRoute(builder: (context) => SigninScreen()),
+      //     );
+      //   },
+      // ),
     );
   }
 }

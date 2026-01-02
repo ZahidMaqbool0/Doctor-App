@@ -15,7 +15,7 @@ class HealthArticleProvider extends ChangeNotifier {
 
   // Constructor
   HealthArticleProvider() {
-    _filteredArticles = List.from(_healthArtical)..shuffle();
+    _filteredArticles = List.from(_healthArtical);
   }
 
 
@@ -34,7 +34,7 @@ class HealthArticleProvider extends ChangeNotifier {
     String queryIs = searchText.toLowerCase();
 
     if(queryIs.isEmpty){
-      _filteredArticles = List.from(_healthArtical)..shuffle();
+      _filteredArticles = List.from(_healthArtical);
     }else{
       _filteredArticles = _healthArtical.where((listData){
         final searchNameArtical = queryIs.isEmpty ? true : listData.nameArtical.toLowerCase().contains(queryIs);
@@ -50,6 +50,7 @@ class HealthArticleProvider extends ChangeNotifier {
 
 List<HealthArticleModel> _allhealthArtical = [
   HealthArticleModel(
+    id:'a1',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_1.png',
     nameArtical: 'Common Blood Tests and What They Reveal About Your Health',
     nameAuthor: 'John Doe',
@@ -64,6 +65,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a2',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_2.png',
     isBookmarked: false,
     nameArtical: 'How to Prepare for a Blood Test: Tips for Accurate Results',
@@ -78,6 +80,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a3',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_3.png',
     isBookmarked: false,
     nameArtical: 'Understanding Your Blood Test Report: A Beginner’s Guide',
@@ -92,6 +95,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a4',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_4.png',
     isBookmarked: false,
     nameArtical: 'The Role of Blood Tests in Detecting Chronic Diseases Early',
@@ -106,6 +110,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a5',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     isBookmarked: false,
     nameArtical: 'When Should You Get a Blood Test? Signs You Shouldn’t Ignore',
@@ -120,6 +125,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a6',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_1.png',
     isBookmarked: false,
     nameArtical: 'What to Expect During an Ultrasound Scan: A Complete Guide',
@@ -134,6 +140,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a7',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_2.png',
     isBookmarked: false,
     nameArtical: 'Different Types of Ultrasound and Their Medical Uses',
@@ -148,6 +155,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a8',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_3.png',
     isBookmarked: false,
     nameArtical: 'How Ultrasound Helps in Diagnosing Pregnancy Complications',
@@ -162,6 +170,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a9',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_4.png',
     isBookmarked: false,
     nameArtical: 'The Safety of Ultrasound Scans: What You Need to Know',
@@ -176,6 +185,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a10',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     isBookmarked: false,
     nameArtical: 'Ultrasound vs. MRI: When Is Each Test Appropriate?',
@@ -190,6 +200,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a11',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_1.png',
     nameArtical: 'How X-Rays Work and What They Can Diagnose',
     isBookmarked: false,
@@ -204,6 +215,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a12',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_2.png',
     nameArtical: 'Common Reasons Your Doctor Might Recommend an X-Ray',
     isBookmarked: false,
@@ -218,6 +230,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a13',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_3.png',
     nameArtical: 'Are X-Rays Safe? Understanding Radiation Exposure',
     nameAuthor: 'Smith Bear',
@@ -232,6 +245,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a14',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_4.png',
     nameArtical: 'Interpreting Your X-Ray Results: What Patients Should Know',
     nameAuthor: 'Smith Bear',
@@ -246,6 +260,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a15',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
         'Advances in X-Ray Technology: From Traditional to Digital Imaging',
@@ -261,6 +276,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a16',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'What Is a Pap Smear and Why Is It Important?',
     isBookmarked: false,
@@ -275,6 +291,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a17',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
         'When Should You Start Getting Pap Smears? Guidelines for Women',
@@ -290,6 +307,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a18',
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     isBookmarked: false,
     nameArtical: 'Understanding Pap Smear Results: What Does It Mean?',
@@ -304,6 +322,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a19',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -319,6 +338,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a20',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Common Myths About Pap Smears Debunked',
@@ -333,6 +353,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a21',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -348,6 +369,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a22',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -363,6 +385,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a23',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -378,6 +401,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a24',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -393,6 +417,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a25',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -408,6 +433,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a26',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -423,6 +449,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a27',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -438,6 +465,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a28',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -453,6 +481,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a29',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'The Importance of Regular Covid Testing During the Pandemic',
@@ -467,6 +496,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a30',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -482,6 +512,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a31',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Why Vaccinations Are Essential for Public Health',
@@ -496,6 +527,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a32',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Common Childhood Vaccinations and Their Benefits',
@@ -510,6 +542,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a33',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'How Vaccines Work: The Science Behind Immunization',
@@ -524,6 +557,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a34',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'The Role of Vaccinations in Preventing Epidemics',
@@ -538,6 +572,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a35',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Addressing Vaccine Hesitancy: Facts vs. Myths',
@@ -552,6 +587,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a36',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'What to Expect from Minor Surgical Procedures',
@@ -566,6 +602,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a37',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Common Types of Minor Surgeries and Their Uses',
@@ -580,6 +617,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a38',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Preparing for Minor Surgery: Tips and Precautions',
@@ -594,6 +632,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a39',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Recovery Tips After Minor Surgery: What You Need to Know',
@@ -608,6 +647,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a40',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -623,6 +663,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a41',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical:
@@ -638,6 +679,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a42',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Advances in ECG Technology: Portable and Wireless Devices',
@@ -652,6 +694,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a43',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'When Should You Get an ECG? Recognizing Symptoms',
@@ -666,6 +709,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a44',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'Understanding Your ECG Results: What the Lines Mean',
@@ -680,6 +724,7 @@ List<HealthArticleModel> _allhealthArtical = [
         ''' Researchers at the West Virginia University Rockefeller Neuroscience Institute have publis a study in the journal Science Translational Medicine that shows promise for treating Alzheimer's disease with ultrasound technology. \n The study, which was conducted on mice, involved using ultrasound technology to stimulate the brain's microglia cells. These cells act as the brain's immune system, and are responsible for removing waste and fighting off infections. In Alzheimer's disease, the microglia cells become less active. ''',
   ),
   HealthArticleModel(
+    id:'a45',
     isBookmarked: false,
     imageUrlArtical: 'lib/assets/images/health_article_images/1_image_5.png',
     nameArtical: 'How to Prepare for an ECG Test: A Simple Guide',

@@ -30,7 +30,7 @@ class ProductsSeeallCategoriesWidget extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
             child: SearchWidget(
               keyboardType: TextInputType.text,
-              hintText: 'Find Products',
+              hintText: 'Search supplement',
               textEditingController: findServicesController,
             ),
           ),
@@ -85,7 +85,9 @@ class ProductsSeeallCategoriesWidget extends StatelessWidget {
                                         (context),
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              ProductDetailsScreen(),
+                                              ProductDetailsScreen(
+                                                catageryName: storeProductProvider.getProduct[index].category,
+                                              ),
                                         ),
                                       );
                                     },

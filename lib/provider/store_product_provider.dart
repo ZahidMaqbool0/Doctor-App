@@ -6,16 +6,26 @@ class StoreProductProvider extends ChangeNotifier {
   List<StoreProductModel> _Products = _products;
   List<CategoryModel> category = _category;
 
+
   //Getter
   List<StoreProductModel> get getProduct => _products;
   List<CategoryModel> get getCategory => _category;
+  List<StoreProductModel> get getDiscountedProduct => _getDiscountedPriceData();
 
+  List <StoreProductModel> getProductsByCategory(String catagery){
+    return _products.where((items) => items.category == catagery).toList();
+  }
+
+
+  List <StoreProductModel> _getDiscountedPriceData(){
+    return _products.where((items) => items.discountedPrice > 0).toList();
+  }
 
   
 }
 
 List<StoreProductModel> _products = [
-  // ========================= SUPPLEMEN =========================
+  // ========================= SUPPLEMENT =========================
   StoreProductModel(
     id: 1,
     productImageUrl: "lib/assets/images/store/1.png",
@@ -132,6 +142,22 @@ List<StoreProductModel> _products = [
     categoryImage: "lib/assets/images/store_images/heart.png",
   ),
   StoreProductModel(
+    id: 7,
+    productImageUrl: "lib/assets/images/store/7.png",
+    name: "Cold & Flu Nasal Drops",
+    shortDetails: "Effective cold relief",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Heart",
+    quantity: 15,
+    unit: "ml",
+    price: 850,
+    discountedPrice: 0,
+    rating: 4.5,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/heart.png",
+  ),
+  StoreProductModel(
     id: 8,
     productImageUrl: "lib/assets/images/store/8.png",
     name: "Saline Nasal Rinse",
@@ -214,6 +240,22 @@ List<StoreProductModel> _products = [
     categoryImage: "lib/assets/images/store_images/femine_care.png",
   ),
   StoreProductModel(
+    id: 12,
+    productImageUrl: "lib/assets/images/store/2.png",
+    name: "Menstrual Pain Relief",
+    shortDetails: "Period pain controller",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Femine Care",
+    quantity: 30,
+    unit: "tablets",
+    price: 1300,
+    discountedPrice: 0,
+    rating: 4.7,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/femine_care.png",
+  ),
+  StoreProductModel(
     id: 13,
     productImageUrl: "lib/assets/images/store/3.png",
     name: "Iron + Folic Acid",
@@ -275,6 +317,22 @@ List<StoreProductModel> _products = [
     unit: "tablets",
     price: 900,
     discountedPrice: 799,
+    rating: 4.5,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/gastroenterol.png",
+  ),
+  StoreProductModel(
+    id: 16,
+    productImageUrl: "lib/assets/images/store/6.png",
+    name: "Digestive Enzyme Tablets",
+    shortDetails: "Easy digestion",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Gastroenterol",
+    quantity: 30,
+    unit: "tablets",
+    price: 900,
+    discountedPrice: 0,
     rating: 4.5,
     isFavorite: false,
     categoryImage: "lib/assets/images/store_images/gastroenterol.png",
@@ -344,6 +402,23 @@ List<StoreProductModel> _products = [
     categoryImage: "lib/assets/images/store_images/gastroenterol.png",
   ),
 
+  StoreProductModel(
+    id: 20,
+    productImageUrl: "lib/assets/images/store/10.png",
+    name: "Stomach Care Syrup",
+    shortDetails: "Improves digestion",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Gastroenterol",
+    quantity: 150,
+    unit: "ml",
+    price: 850,
+    discountedPrice: 0,
+    rating: 4.4,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/gastroenterol.png",
+  ),
+
   // ========================= UROLOGY =========================
   StoreProductModel(
     id: 21,
@@ -389,6 +464,22 @@ List<StoreProductModel> _products = [
     unit: "tablets",
     price: 2000,
     discountedPrice: 1850,
+    rating: 4.7,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/urology.png",
+  ),
+  StoreProductModel(
+    id: 23,
+    productImageUrl: "lib/assets/images/store/3.png",
+    name: "Prostate Support Tablets",
+    shortDetails: "Men’s health formula",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Urology",
+    quantity: 30,
+    unit: "tablets",
+    price: 2000,
+    discountedPrice: 0,
     rating: 4.7,
     isFavorite: false,
     categoryImage: "lib/assets/images/store_images/urology.png",
@@ -444,6 +535,22 @@ List<StoreProductModel> _products = [
     categoryImage: "lib/assets/images/store_images/dentistry.png",
   ),
   StoreProductModel(
+    id: 26,
+    productImageUrl: "lib/assets/images/store/6.png",
+    name: "Whitening Toothpaste",
+    shortDetails: "Brighter smile",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Dentistry",
+    quantity: 100,
+    unit: "ml",
+    price: 700,
+    discountedPrice: 0,
+    rating: 4.5,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/dentistry.png",
+  ),
+  StoreProductModel(
     id: 27,
     productImageUrl: "lib/assets/images/store/7.png",
     name: "Mouth Freshener Spray",
@@ -492,6 +599,22 @@ List<StoreProductModel> _products = [
     categoryImage: "lib/assets/images/store_images/dentistry.png",
   ),
   StoreProductModel(
+    id: 29,
+    productImageUrl: "lib/assets/images/store/9.png",
+    name: "Sensitive Teeth Gel",
+    shortDetails: "For sensitive teeth",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Dentistry",
+    quantity: 80,
+    unit: "ml",
+    price: 900,
+    discountedPrice: 0,
+    rating: 4.4,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/dentistry.png",
+  ),
+  StoreProductModel(
     id: 30,
     productImageUrl: "lib/assets/images/store/10.png",
     name: "Gum Care Mouthwash",
@@ -525,6 +648,24 @@ List<StoreProductModel> _products = [
     isFavorite: false,
     categoryImage: "lib/assets/images/store_images/heart.png",
   ),
+
+  StoreProductModel(
+    id: 31,
+    productImageUrl: "lib/assets/images/store/1.png",
+    name: "Heart Health Tablets",
+    shortDetails: "Cardio support",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Heart",
+    quantity: 30,
+    unit: "tablets",
+    price: 2000,
+    discountedPrice: 0,
+    rating: 4.7,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/heart.png",
+  ),
+
   StoreProductModel(
     id: 32,
     productImageUrl: "lib/assets/images/store/2.png",
@@ -589,17 +730,29 @@ List<StoreProductModel> _products = [
     isFavorite: false,
     categoryImage: "lib/assets/images/store_images/heart.png",
   ),
+  StoreProductModel(
+    id: 35,
+    productImageUrl: "lib/assets/images/store/5.png",
+    name: "Healthy Blood Flow Capsules",
+    shortDetails: "Improves blood circulation",
+    longDetails:
+    '''Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.''',
+    category: "Heart",
+    quantity: 40,
+    unit: "capsules",
+    price: 2100,
+    discountedPrice: 0,
+    rating: 4.6,
+    isFavorite: false,
+    categoryImage: "lib/assets/images/store_images/heart.png",
+  ),
   // -------------------- SUPLEMEN --------------------
   StoreProductModel(
     id: 35,
     productImageUrl: 'lib/assets/images/store/1.png',
     name: 'Energy Booster Supplement',
     shortDetails: 'Daily energy & immunity support.',
-    longDetails: '''This supplement boosts daily energy levels.
-        'It supports immune health naturally.
-        'Made with premium herbal extracts.
-        'Enhances stamina and reduces tiredness.
-        'Perfect for people with active lifestyles.''',
+    longDetails: '''This supplement boosts daily energy levels. 'It supports immune health naturally. 'Made with premium herbal extracts. 'Enhances stamina and reduces tiredness. 'Perfect for people with active lifestyles.''',
     category: 'Suplemen',
     quantity: 30,
     unit: 'Tablets',
@@ -645,6 +798,26 @@ List<StoreProductModel> _products = [
     unit: 'Capsules',
     price: 1800,
     discountedPrice: 1450,
+    rating: 4.8,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/suplemen.png',
+  ),
+
+  StoreProductModel(
+    id: 37,
+    productImageUrl: 'lib/assets/images/store/3.png',
+    name: 'Multivitamin Advanced',
+    shortDetails: 'Complete nutrition formula.',
+    longDetails: '''A complete blend of essential vitamins.
+        'Improves overall health and strength.
+        'Boosts metabolism and energy.
+        'Supports heart and brain function.
+        'Perfect for daily health maintenance.''',
+    category: 'Suplemen',
+    quantity: 90,
+    unit: 'Capsules',
+    price: 1800,
+    discountedPrice: 0,
     rating: 4.8,
     isFavorite: false,
     categoryImage: 'lib/assets/images/store_images/suplemen.png',
@@ -712,6 +885,26 @@ List<StoreProductModel> _products = [
   ),
 
   StoreProductModel(
+    id: 40,
+    productImageUrl: 'lib/assets/images/store/6.png',
+    name: 'Nasal Spray Relief',
+    shortDetails: 'Instant breath comfort.',
+    longDetails: '''Provides quick nasal congestion relief.
+        'Helps open blocked nose.
+        'Safe for daily use.
+        'Ideal for allergy or flu.
+        'Improves airflow and breathing.''',
+    category: 'Nassal Care',
+    quantity: 20,
+    unit: 'ml',
+    price: 0,
+    discountedPrice: 499,
+    rating: 4.2,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/nassal_care.png',
+  ),
+
+  StoreProductModel(
     id: 41,
     productImageUrl: 'lib/assets/images/store/7.png',
     name: 'Steam Inhaler Capsules',
@@ -772,6 +965,26 @@ List<StoreProductModel> _products = [
   ),
 
   StoreProductModel(
+    id: 42,
+    productImageUrl: 'lib/assets/images/store/8.png',
+    name: 'Allergy Nasal Gel',
+    shortDetails: 'For seasonal allergies.',
+    longDetails: '''Reduces irritation inside nose.
+        'Helps prevent allergy reactions.
+        'Keeps nasal passage moist.
+        'Fast absorption formula.
+        'Recommended for pollen seasons.''',
+    category: 'Nassal Care',
+    quantity: 15,
+    unit: 'ml',
+    price: 450,
+    discountedPrice: 0,
+    rating: 4.1,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/nassal_care.png',
+  ),
+
+  StoreProductModel(
     id: 44,
     productImageUrl: 'lib/assets/images/store/10.png',
     name: 'Cold Relief Balm',
@@ -813,6 +1026,46 @@ List<StoreProductModel> _products = [
   ),
 
   StoreProductModel(
+    id: 45,
+    productImageUrl: 'lib/assets/images/store/1.png',
+    name: 'Women Health Supplement',
+    shortDetails: 'Daily wellness for women.',
+    longDetails: '''Improves hormonal balance.
+        'Boosts energy and mood.
+        'Supports daily nutrition needs.
+        'Made with safe herbal extracts.
+        'Perfect for long-term health.''',
+    category: 'Femine Care',
+    quantity: 30,
+    unit: 'Tablets',
+    price: 1400,
+    discountedPrice: 0,
+    rating: 4.6,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/femine_care.png',
+  ),
+
+  StoreProductModel(
+    id: 45,
+    productImageUrl: 'lib/assets/images/store/1.png',
+    name: 'Women Health Supplement',
+    shortDetails: 'Daily wellness for women.',
+    longDetails: '''Improves hormonal balance.
+        'Boosts energy and mood.
+        'Supports daily nutrition needs.
+        'Made with safe herbal extracts.
+        'Perfect for long-term health.''',
+    category: 'Femine Care',
+    quantity: 30,
+    unit: 'Tablets',
+    price: 1400,
+    discountedPrice: 0,
+    rating: 4.6,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/femine_care.png',
+  ),
+
+  StoreProductModel(
     id: 46,
     productImageUrl: 'lib/assets/images/store/2.png',
     name: 'Feminine Wash',
@@ -847,6 +1100,26 @@ List<StoreProductModel> _products = [
     unit: 'Tablets',
     price: 950,
     discountedPrice: 799,
+    rating: 4.5,
+    isFavorite: false,
+    categoryImage: 'lib/assets/images/store_images/femine_care.png',
+  ),
+
+  StoreProductModel(
+    id: 47,
+    productImageUrl: 'lib/assets/images/store/3.png',
+    name: 'Iron & Calcium Tablets',
+    shortDetails: 'Strong bones & energy.',
+    longDetails: '''Prevents iron deficiency.
+        'Strengthens bones and muscles.
+        'Perfect for daily use.
+        'Recommended for women.
+        'Improves overall wellbeing.''',
+    category: 'Femine Care',
+    quantity: 60,
+    unit: 'Tablets',
+    price: 950,
+    discountedPrice: 0,
     rating: 4.5,
     isFavorite: false,
     categoryImage: 'lib/assets/images/store_images/femine_care.png',
@@ -928,6 +1201,26 @@ List<StoreProductModel> _products = [
     unit: 'Tablets',
     price: 350,
     discountedPrice: 299,
+    rating: 4.4,
+    isFavorite: true,
+    categoryImage: 'lib/assets/images/store_images/gastroenterol.png',
+  ),
+
+  StoreProductModel(
+    id: 51,
+    productImageUrl: 'lib/assets/images/store/7.png',
+    name: 'Acid Control Tablets',
+    shortDetails: 'Fast relief from acidity.',
+    longDetails: '''Neutralizes stomach acid quickly.
+        'Relieves heartburn discomfort.
+        'Long-lasting effect for hours.
+        'Perfect after spicy meals.
+        'Safe for occasional use.''',
+    category: 'Gastroenterol',
+    quantity: 20,
+    unit: 'Tablets',
+    price: 350,
+    discountedPrice: 0,
     rating: 4.4,
     isFavorite: true,
     categoryImage: 'lib/assets/images/store_images/gastroenterol.png',
@@ -1029,6 +1322,25 @@ List<StoreProductModel> _products = [
     unit: 'Tablets',
     price: 900,
     discountedPrice: 780,
+    rating: 4.3,
+    isFavorite: true,
+    categoryImage: 'lib/assets/images/store_images/urology.png',
+  ),
+  StoreProductModel(
+    id: 56,
+    productImageUrl: 'lib/assets/images/store/2.png',
+    name: 'Urinary Pain Relief',
+    shortDetails: 'Fast relief tablets.',
+    longDetails: '''Reduces burning sensation.
+        'Helps with urinary infections.
+        'Provides quick comfort.
+        'Safe temporary relief.
+        'Recommended by doctors.''',
+    category: 'Urology',
+    quantity: 20,
+    unit: 'Tablets',
+    price: 900,
+    discountedPrice: 0,
     rating: 4.3,
     isFavorite: true,
     categoryImage: 'lib/assets/images/store_images/urology.png',

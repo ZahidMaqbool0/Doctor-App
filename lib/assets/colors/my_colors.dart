@@ -7,6 +7,7 @@ class MyColors {
   static const Color fontHeadingColor = Color(0xFF00003F);
   static const Color fontDescriptionColor = Color(0xFF444444);
   static const Color dashboardHeaderTextColor = Color(0xFF030C54);
+  static const Color redColor = Color(0xFFFC3737);
 
 
   static const Color graylightColor = Color(0xFFC8C8C8);

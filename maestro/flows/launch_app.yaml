@@ -1,0 +1,5 @@
+appId: com.example.doctorapp
+---
+- launchApp:
+      clearState: true
+- tapOn: doctorapp

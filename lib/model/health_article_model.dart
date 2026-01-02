@@ -1,4 +1,5 @@
 class HealthArticleModel {
+  final String id;
   final String imageUrlArtical;
   final String nameArtical;
   final String nameAuthor;
@@ -12,6 +13,7 @@ class HealthArticleModel {
   bool isBookmarked;
 
   HealthArticleModel({
+    required this.id,
     required this.imageUrlArtical,
     required this.nameArtical,
     required this.nameAuthor,

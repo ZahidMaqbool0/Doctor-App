@@ -1,0 +1,32 @@
+appId: com.example.doctorapp
+---
+
+- runFlow: ../flows/launch_app.yaml
+
+- assertVisible:
+    text: "Skip"
+
+- swipe:
+    direction: LEFT
+- waitForAnimationToEnd:
+    timeout: 1000
+
+- swipe:
+    direction: LEFT
+- waitForAnimationToEnd:
+    timeout: 1000
+
+- swipe:
+    direction: LEFT
+- waitForAnimationToEnd:
+    timeout: 1000
+
+- assertVisible:
+    label: "Get"
+
+- tapOn:
+    label: "Get"
+
+
+
+

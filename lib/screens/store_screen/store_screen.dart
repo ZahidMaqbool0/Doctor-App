@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:doctorapp/assets/colors/my_colors.dart';
 import 'package:doctorapp/provider/store_product_provider.dart';
+import 'package:doctorapp/screens/store_screen/drug_detiled_screen.dart';
+import 'package:doctorapp/screens/store_screen/popular_products.dart';
 import 'package:doctorapp/screens/store_screen/product_details_screen.dart';
 import 'package:doctorapp/screens/store_screen/products_SeeAll_categories_widget.dart';
 import 'package:doctorapp/widgets/dashboard_card_widget.dart';
@@ -21,6 +23,7 @@ class _StoreScreenState extends State<StoreScreen> {
   Widget build(BuildContext context) {
     final searchEditingController = TextEditingController();
     return Scaffold(
+      backgroundColor: MyColors.whiteColor,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -104,7 +107,9 @@ class _StoreScreenState extends State<StoreScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => ProductDetailsScreen(
-                                    // pass category/product info if needed
+                                    catageryName: storeProductsProvder
+                                        .getProduct[index]
+                                        .category,
                                   ),
                                 ),
                               );
@@ -152,6 +157,353 @@ class _StoreScreenState extends State<StoreScreen> {
                       },
                     );
                   },
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Popular Product',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Roboto',
+                        color: MyColors.blackColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    InkWell(
+                      borderRadius: BorderRadius.circular(10),
+                      onTap: (){
+                        Navigator.push((context), MaterialPageRoute(builder: (context) => PopularProducts()));
+                      },
+                      child: Text(
+                        'See all',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Roboto',
+                          color: MyColors.basePrimaryColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 190,
+                  child: Consumer<StoreProductProvider>(
+                    builder: (context, storeProductsProvider, child) {
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: storeProductsProvider.getProduct.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            borderRadius: BorderRadius.circular(10),
+                            onTap: () {
+                              Navigator.push(
+                                (context),
+                                MaterialPageRoute(
+                                  builder: (context) => DrugDetiledScreen(
+                                    index: index,
+                                    catagoryName:
+                                    storeProductsProvider.getProduct[index].category,
+                                    image: storeProductsProvider.getProduct[index]
+                                        .productImageUrl,
+                                    name: storeProductsProvider.getProduct[index].name,
+                                    quanitity:
+                                    storeProductsProvider.getProduct[index].quantity,
+                                    unit: storeProductsProvider.getProduct[index].unit,
+                                    dicountedprice: storeProductsProvider.getProduct[index]
+                                        .discountedPrice,
+                                    price: storeProductsProvider.getProduct[index].price,
+                                    description:
+                                    storeProductsProvider.getProduct[index].longDetails,
+                                    rating: storeProductsProvider.getProduct[index].rating,
+                                    isFavorit:
+                                    storeProductsProvider.getProduct[index].isFavorite,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(3),
+                              width: 150,
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: MyColors.whiteColor,
+                                border: Border.all(
+                                  color: MyColors.graylightColor,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.asset(
+                                        storeProductsProvider
+                                            .getProduct[index]
+                                            .productImageUrl,
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(height: 10),
+
+                                  Text(
+                                    storeProductsProvider
+                                        .getProduct[index]
+                                        .name,
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      color: MyColors.blackColor,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        storeProductsProvider
+                                            .getProduct[index]
+                                            .quantity
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.graylightColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        storeProductsProvider
+                                            .getProduct[index]
+                                            .unit,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.graylightColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  SizedBox(height: 10),
+
+                                  storeProductsProvider
+                                              .getProduct[index]
+                                              .discountedPrice !=
+                                          0
+                                      ? Text(
+                                          '\$${storeProductsProvider.getProduct[index].discountedPrice.toString()}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Roboto',
+                                            color: MyColors.blackColor,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )
+                                      : Text(
+                                          '\$${storeProductsProvider.getProduct[index].price.toString()}',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontFamily: 'Roboto',
+                                            color: MyColors.blackColor,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Product on Sale',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Roboto',
+                        color: MyColors.blackColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    InkWell(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Text(
+                        'See all',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Roboto',
+                          color: MyColors.basePrimaryColor,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 190,
+                  child: Consumer<StoreProductProvider>(
+                    builder: (context, storeProductsProvider, child) {
+                      final discountedProducts =
+                          storeProductsProvider.getDiscountedProduct;
+                      return ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: discountedProducts.length,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            borderRadius: BorderRadius.circular(10),
+                            onTap: () {
+                              Navigator.push(
+                                (context),
+                                MaterialPageRoute(
+                                  builder: (context) => DrugDetiledScreen(
+                                    index: index,
+                                    catagoryName:
+                                        discountedProducts[index].category,
+                                    image: discountedProducts[index]
+                                        .productImageUrl,
+                                    name: discountedProducts[index].name,
+                                    quanitity:
+                                        discountedProducts[index].quantity,
+                                    unit: discountedProducts[index].unit,
+                                    dicountedprice: discountedProducts[index]
+                                        .discountedPrice,
+                                    price: discountedProducts[index].price,
+                                    description:
+                                        discountedProducts[index].longDetails,
+                                    rating: discountedProducts[index].rating,
+                                    isFavorit:
+                                        discountedProducts[index].isFavorite,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(3),
+                              width: 150,
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: MyColors.whiteColor,
+                                border: Border.all(
+                                  color: MyColors.graylightColor,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.asset(
+                                        discountedProducts[index]
+                                            .productImageUrl,
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+
+                                  SizedBox(height: 10),
+
+                                  Text(
+                                    discountedProducts[index].name,
+                                    textAlign: TextAlign.start,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontFamily: 'Roboto',
+                                      color: MyColors.blackColor,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        discountedProducts[index].quantity
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.graylightColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text(
+                                        discountedProducts[index].unit,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.graylightColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                  SizedBox(height: 5),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '\$${discountedProducts[index].discountedPrice}',
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.blackColor,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                      Text(
+                                        '\$${discountedProducts[index].price}',
+                                        style: TextStyle(
+                                          decoration:
+                                              TextDecoration.lineThrough,
+                                          fontSize: 16,
+                                          fontFamily: 'Roboto',
+                                          color: MyColors.blackColor,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
                 SizedBox(height: 20),
               ],

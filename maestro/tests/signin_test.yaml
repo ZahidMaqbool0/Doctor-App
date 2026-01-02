@@ -1,0 +1,18 @@
+appId: com.example.doctorapp
+---
+- runFlow: ../tests/onboarding_test.yaml
+
+- assertVisible:
+    text: "Sign In"
+
+- tapOn: Continue With Mobile Number
+
+- assertVisible:
+     text: "Enter Phone Number"
+
+- tapOn: Send OTP
+
+- assertVisible:
+    text: "Enter OTP Code"
+
+- tapOn: Continue

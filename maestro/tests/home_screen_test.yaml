@@ -1,0 +1,101 @@
+appId: com.example.doctorapp
+---
+
+- runFlow: ../tests/signin_test.yaml
+
+- assertVisible:
+    text: "Upcoming Appointment"
+
+- swipe:
+    direction: UP
+
+- assertVisible:
+    text: 'Our Services'
+
+
+- assertVisible:
+    text: 'Health Package'
+
+
+- tapOn:
+    below:
+      text: "Health Package"
+    index: 0
+
+- back
+
+- swipe:
+    direction: UP
+
+- assertVisible:
+    text: 'Health article'
+
+- tapOn:
+    below:
+      text: "see all"
+    label: 'a_0'
+#    index: 0
+
+- back
+
+- swipe:
+    direction: DOWN
+- swipe:
+    direction: DOWN
+- swipe:
+    direction: UP
+
+- assertVisible:
+      label: "more_services_0"
+
+- tapOn:
+      below:
+          text: 'Our Services'
+      index: 9
+      label: "more_services_9"
+
+
+- assertVisible:
+    text: 'Find service'
+
+-  assertVisible:
+       below:
+           text: 'Find service'
+       label: 'services_card_0'
+
+- tapOn: |-
+      detail_button_0
+      Detail
+
+- back
+
+- tapOn: |-
+      detail_button_1
+      Detail
+      
+- tapOn:
+      text: 'Book Appointment'
+
+- swipe:
+      direction: UP
+
+- assertVisible:
+      text: 'Contact Details'
+
+
+- tapOn: Booking for Dependant/ Others
+- tapOn: |-
+      John Doe Santos
+      Joedosanto68@gmail.com - +69 823217421
+      
+- swipe:
+      direction: UP
+
+
+
+
+
+
+
+
+
